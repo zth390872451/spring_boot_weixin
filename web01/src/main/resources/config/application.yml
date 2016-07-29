@@ -1,0 +1,7 @@
+---
+spring:
+  application:
+    name: web
+server:
+  context-path: /web  #then access  http://localhost:8080/maven01
+  port: 8888

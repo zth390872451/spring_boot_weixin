@@ -1,7 +1,7 @@
 package main.service.wechat;
 
 import main.domain.wechat.resp.TextMessage;
-import main.util.WechatXmlUtil;
+import main.util.wechat.WechatXmlUtil;
 import org.dom4j.DocumentException;
 import org.springframework.stereotype.Service;
 

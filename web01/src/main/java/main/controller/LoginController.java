@@ -1,6 +1,7 @@
 package main.controller;
 
 import main.conf.ShiroConfiguration;
+import main.util.MailUtil;
 import org.apache.commons.lang.StringUtils;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.IncorrectCredentialsException;
@@ -8,11 +9,10 @@ import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
 
 /**
  * Created by Administrator on 2016/7/25 0025.
@@ -20,10 +20,14 @@ import org.springframework.web.bind.annotation.RestController;
 @Controller
 public class LoginController {
 
+    @Autowired
+    private MailUtil mailUtil;
+
     private static final Logger logger = LoggerFactory.getLogger(ShiroConfiguration.class);
 
     @RequestMapping("/login")
     public String login(String username, String password, ModelMap modelMap){
+        mailUtil.sendMail();
         //获取当前线程中的subject，判断是否认证成功
         boolean isAuth = SecurityUtils.getSubject().isAuthenticated();
         String msg ="";

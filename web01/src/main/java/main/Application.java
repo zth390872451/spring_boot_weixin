@@ -59,7 +59,7 @@ public class Application extends SpringBootServletInitializer {
     }
     private static void addDefaultProfile(SpringApplication app, SimpleCommandLinePropertySource source) {
         if (!source.containsProperty("spring.profiles.active")) {
-            app.setAdditionalProfiles("dev");
+            app.setAdditionalProfiles("prod");
         }
     }
 }

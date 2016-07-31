@@ -1,10 +1,13 @@
 package main.filter.aop;
 
+import main.domain.Admin;
+import main.service.AdminService;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
@@ -13,6 +16,7 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Arrays;
 import java.util.Enumeration;
+import java.util.List;
 
 /**
  * 实现web层的日志切面
@@ -29,6 +33,9 @@ import java.util.Enumeration;
 （在切入点前的操作，按order的值由小到大执行;
 在切入点后的操作，按order的值由大到小执行）*/
 public class WebLogAspect {
+    @Autowired
+    private AdminService adminService;
+
     private Logger logger = LoggerFactory.getLogger(this.getClass());
     ThreadLocal<Long> startTime = new ThreadLocal<Long>();
     //定义切点：公开 任意返回值 main.controller 包下的所有类 的以aop开头的任意参数的方法
@@ -40,6 +47,10 @@ public class WebLogAspect {
     //@Before在切入点开始处切入内容
     @Before("webLog()")
     public void doBefore(JoinPoint joinPoint){
+
+        List<Admin> all = adminService.getAll();
+        logger.info("妈的测试啊login"+all.toString());
+
         startTime.set(System.currentTimeMillis());
         logger.info("WebLogAspect.doBefore()");
         //接受请求，记录请求内容
@@ -53,7 +64,7 @@ public class WebLogAspect {
         logger.info("UserPrincipal:**"+httpServletRequest.getUserPrincipal());
         logger.info("QueryString:**"+httpServletRequest.getQueryString());
         logger.info("Args:**"+ Arrays.toString(joinPoint.getArgs()));
-
+        logger.info("妈的测试啊login"+all.toString());
         Enumeration<String> parameterNames = httpServletRequest.getParameterNames();
         while (parameterNames.hasMoreElements()){
             String paramName = parameterNames.nextElement();

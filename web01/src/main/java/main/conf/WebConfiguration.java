@@ -15,7 +15,7 @@ public class WebConfiguration extends WebMvcConfigurerAdapter {
     @Value("${server.context-path}")
     private String contextPath;
 
-   /* @Bean
+   @Bean
     public TemplateResolver defaultTemplateResolver() {
         TemplateResolver resolver = new TemplateResolver();
         resolver.setResourceResolver(thymeleafResourceResolver());
@@ -29,5 +29,5 @@ public class WebConfiguration extends WebMvcConfigurerAdapter {
     @Bean
     public SpringResourceResourceResolver thymeleafResourceResolver() {
         return new SpringResourceResourceResolver();
-    }*/
+    }
 }

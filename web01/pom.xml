@@ -11,19 +11,38 @@
 
     <modelVersion>4.0.0</modelVersion>
     <artifactId>web01</artifactId>
-    <packaging>pom</packaging>
+    <packaging>war</packaging>
 
+    <properties>
+        <java.version>1.7</java.version>
+        <start-class>main.Application</start-class>
+    </properties>
 
+    <!-- Inherit defaults from Spring Boot -->
     <dependencies>
-
-
+        <!--支持 Web 应用开发，包含 Tomcat 和 spring-mvc。-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+        <!-- 	使用 Spring Boot 默认的 Tomcat 作为应用服务器包 -->
+       <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+            <!--<scope>provided</scope>-->
+            <!--这里指定打包的时候不再需要tomcat相关的包，但是 开发时需要把这个给解开，有空找其他方式-->
+        </dependency>
+
         <dependency>
-        <groupId>org.springframework</groupId>
-        <artifactId>springloaded</artifactId>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-jasper</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <!--热部署-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>springloaded</artifactId>
+            <scope>provided</scope>
         </dependency>
 
         <!-- jpa-->
@@ -31,6 +50,23 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
+
+        <!--这个包 能解决外部tomcat容器启动时的数据源找不到的问题
+        {
+            如果你采用在yml文件中配置数据源且采用如下格式：dataSourceClassName出现红叉叉
+            spring:
+                datasource:
+                dataSourceClassName: com.mysql.jdbc.Driver
+        }我只想说：qnmlgm
+        参考链接：
+        http://stackoverflow.com/questions/24074749/spring-boot-cannot-determine-embedded-database-driver-class-for-database-type/25340415
+        -->
+        <!--<dependency>
+            <groupId>org.hsqldb</groupId>
+            <artifactId>hsqldb</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+-->
         <!--mysql-->
         <dependency>
             <groupId>mysql</groupId>
@@ -44,12 +80,7 @@
             <version>2.6</version>
         </dependency>
 
-        <!--embed-tomcat-->
-        <dependency>
-            <groupId>org.apache.tomcat.embed</groupId>
-            <artifactId>tomcat-embed-jasper</artifactId>
-            <scope>provided</scope>
-        </dependency>
+
         <!--shiro-->
         <dependency>
             <groupId>org.apache.shiro</groupId>
@@ -92,24 +123,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-aop</artifactId>
         </dependency>
-        <!--微信公众平台API(1.5.2,2015-08-09 released)-->
-        <!--<dependency>-->
-            <!--<groupId>com.foxinmy</groupId>-->
-            <!--<artifactId>weixin4j-mp</artifactId>-->
-            <!--<version>1.5.2</version>-->
-        <!--</dependency>-->
-        <!--&lt;!&ndash;微信企业号API&ndash;&gt;-->
-        <!--<dependency>-->
-            <!--<groupId>com.foxinmy</groupId>-->
-            <!--<artifactId>weixin4j-qy</artifactId>-->
-            <!--<version>1.5.2</version>-->
-        <!--</dependency>-->
-        <!--&lt;!&ndash;微信回调消息服务器&ndash;&gt;-->
-        <!--<dependency>
-            <groupId>com.foxinmy</groupId>
-            <artifactId>weixin4j-server</artifactId>
-            <version>1.0.4</version>
-        </dependency>-->
 
         <!--dom4j 解析xml文件-->
         <dependency>
@@ -142,8 +155,15 @@
 
     </dependencies>
 
-
-
+    <build>
+        <finalName>webchatStudy</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 
 
 </project>

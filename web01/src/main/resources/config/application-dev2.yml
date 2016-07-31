@@ -1,0 +1,63 @@
+---
+server:
+  port: 8088
+---
+#spring:
+#  profiles:
+#    active: dev
+#  datasource:
+#    dataSourceClassName: com.mysql.jdbc.Driver #红色警告需要 pom文件中的hsqldb包来消除
+#    url: jdbc:mysql://localhost:3306/zthtest
+#    username: root
+#    password: 123456
+#    initialSize: 50
+#    maxActive: 100
+#    minIdle: 5
+#    maxWait: 60000
+#    validationQuery: select 1
+#    testOnBorrow: false
+#    testOnReturn: false
+#    testWhileIdle: true
+#    poolPreparedStatements: true
+#    maxPoolPreparedStatementPerConnectionSize: 50
+#    timeBetweenEvictionRunsMillis: 60000
+#    minEvictableIdleTimeMillis: 25200000
+#    removeAbandoned: true
+#    removeAbandonedTimeout: 1800
+#    logAbandoned: true
+#    filters: stat
+    #MySQL optimizations, see https://github.com/brettwooldridge/HikariCP/wiki/MySQL-Configuration
+    #cachePrepStmts: true
+    #prepStmtCacheSize: 250
+    #prepStmtCacheSqlLimit: 2048
+    #useServerPrepStmts: true
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    database: MYSQL
+    openInView: true
+    show_sql: true
+    generate-ddl: true #(false)
+    hibernate:
+        ddl-auto: update #(none)
+        #naming-strategy: org.hibernate.config.EJB3NamingStrategy #\u5f71\u54cd\u8868\u548c\u5b57\u6bb5\u540d\u79f0\uff0c\u8868\u4e2d\u5217\u540d\u548c\u5b57\u6bb5\u540d\u79f0
+    properties:
+       hibernate.cache.use_second_level_cache: true
+       hibernate.cache.use_query_cache: false
+       hibernate.generate_statistics: false
+       #hibernate.cache.region.factory_class: org.hibernate.cache.ehcache.SingletonEhCacheRegionFactory
+#  redis:
+#    database: 8 # database name
+#    host: 114.215.198.210 # server host
+#    password: rediS100 # server password
+#    port: 6379 # connection port
+#    pool:
+#      max-idle: 8 # pool settings ...
+#      min-idle: 0
+#      max-active: 8
+#      max-wait: -1
+#    #sentinel:
+     # master: # name of Redis server
+     # nodes: # comma-separated list of host:port pairs
+---
+
+---

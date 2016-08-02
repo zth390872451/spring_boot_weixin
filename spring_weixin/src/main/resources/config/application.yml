@@ -1,9 +1,10 @@
 server:
-  port: 8881
+  context-path: /springboot_weixin  #then access  http://localhost:8080/maven01
+  port: 8801
 ---
 spring:
   application:
-    name: wechatStudy
+    name: springboot_weixin
   profiles:
     active: dev
   datasource:
@@ -26,3 +27,16 @@ spring:
     removeAbandoned: true
     removeAbandonedTimeout: 1800
     logAbandoned: true
+  jpa:
+      database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+      database: MYSQL
+      openInView: true
+      show_sql: true
+      generate-ddl: true #(false)
+      hibernate:
+          ddl-auto: update #(none)
+          #naming-strategy: org.hibernate.config.EJB3NamingStrategy #影响表和字段名称，表中列名和字段名称
+      properties:
+         hibernate.cache.use_second_level_cache: true
+         hibernate.cache.use_query_cache: false
+         hibernate.generate_statistics: false

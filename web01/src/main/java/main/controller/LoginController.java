@@ -25,12 +25,12 @@ public class LoginController {
     @Autowired
     private AdminService adminService;
 
-    @RequestMapping("/login")
+        @RequestMapping("/login")
     @ResponseBody
     public String login(String username, String password, ModelMap modelMap){
         List<Admin> all = adminService.getAll();
         logger.info("login"+all.toString());
-        return "s";
+        return "s"+all.get(0).getDepartment();
 //        mailUtil.sendMail();
         //获取当前线程中的subject，判断是否认证成功
         /*boolean isAuth = SecurityUtils.getSubject().isAuthenticated();

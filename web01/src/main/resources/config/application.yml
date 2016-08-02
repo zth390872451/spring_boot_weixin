@@ -1,31 +1,40 @@
----
-spring:
-  application:
-    name: webchatStudy
 server:
-  context-path: /webchatStudy  #then access  http://localhost:8080/maven01
-  port: 8888
+  context-path: /wechatStudy  #then access  http://localhost:8080/maven01
+  port: 8880
+---
 #spring:
-#  profiles:
-#    active: prod
+#  application:
+#    name: wechatStudy
 #  datasource:
-#    dataSourceClassName: com.mysql.jdbc.Driver #(com.mysql.jdbc.jdbc2.optional.MysqlDataSource)
-#    url: jdbc:mysql://localhost:3306/zthtest
-#    username: root
-#    password: 123456
-#    initialSize: 50
-#    maxActive: 1000
-#    minIdle: 5
-#    maxWait: 60000
-#    validationQuery: select 1
-#    testOnBorrow: false
-#    testOnReturn: false
-#    testWhileIdle: true
-#    poolPreparedStatements: true
-#    maxPoolPreparedStatementPerConnectionSize: 50
-#    timeBetweenEvictionRunsMillis: 60000
-#    minEvictableIdleTimeMillis: 25200000
-#    removeAbandoned: true
-#    removeAbandonedTimeout: 1800
-#    logAbandoned: true
-#    filters: stat
+#      dataSourceClassName: com.mysql.jdbc.Driver #(com.mysql.jdbc.jdbc2.optional.MysqlDataSource)
+#      url: jdbc:mysql://localhost:3306/test
+#      driverClassName: com.mysql.jdbc.Driver
+#      username: root
+#      password: pwd
+#      initialSize: 50
+#      maxActive: 100
+#      minIdle: 5
+#      maxWait: 60000
+#      validationQuery: select 1
+#      testOnBorrow: false
+#      testOnReturn: false
+#      testWhileIdle: true
+#      poolPreparedStatements: true
+#      timeBetweenEvictionRunsMillis: 60000
+#      minEvictableIdleTimeMillis: 25200000
+#      removeAbandoned: true
+#      removeAbandonedTimeout: 1800
+#      logAbandoned: true
+  jpa:
+      database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+      database: MYSQL
+      openInView: true
+      show_sql: true
+      generate-ddl: true #(false)
+      hibernate:
+          ddl-auto: update #(none)
+          #naming-strategy: org.hibernate.config.EJB3NamingStrategy #影响表和字段名称，表中列名和字段名称
+      properties:
+         hibernate.cache.use_second_level_cache: true
+         hibernate.cache.use_query_cache: false
+         hibernate.generate_statistics: false

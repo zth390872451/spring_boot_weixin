@@ -55,11 +55,22 @@ public class Application extends SpringBootServletInitializer {
                 env.getProperty("server.port"),
 
                 InetAddress.getLocalHost().getHostAddress(),
-                env.getProperty("server.port"));
+                env.getProperty("server.port"),"spring.profiles.active========"+source.containsProperty("spring.profiles.active"));
     }
-    private static void addDefaultProfile(SpringApplication app, SimpleCommandLinePropertySource source) {
+    private static void addDefaultProfile(SpringApplication app, SimpleCommandLinePropertySource source) throws UnknownHostException {
         if (!source.containsProperty("spring.profiles.active")) {
-            app.setAdditionalProfiles("prod");
+            if (!InetAddress.getLocalHost().getHostAddress().contains("115.159.184.85")){
+                app.setAdditionalProfiles("dev");
+                log.warn("加载了dev配置文件");
+            }else {
+                app.setAdditionalProfiles("prod");
+                log.warn("加载了prod配置文件");
+            }
+//            app.setAdditionalProfiles("dev");
+//            log.warn("加载了dev配置文件");
+        }else {
+            log.warn("已经包含了属性文件 名字列表 source.getPropertyNames()="+source.getPropertyNames());
+            source.getPropertyNames();
         }
     }
 }

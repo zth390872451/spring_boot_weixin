@@ -13,6 +13,7 @@
     <artifactId>web01</artifactId>
     <packaging>war</packaging>
 
+
     <properties>
         <java.version>1.7</java.version>
         <start-class>main.Application</start-class>
@@ -147,16 +148,56 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-mail</artifactId>
         </dependency>
-        <!--模板-->
+        <!--邮件 模板-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-velocity</artifactId>
         </dependency>
 
+        <!--下面2个包用来在服务器段发送http请求的 -->
+        <!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient -->
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>4.5.2</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/commons-httpclient/commons-httpclient -->
+        <dependency>
+            <groupId>commons-httpclient</groupId>
+            <artifactId>commons-httpclient</artifactId>
+            <version>3.1</version>
+        </dependency>
+
+        <!--微信公众平台API(1.5.2,2015-08-09 released)-->
+        <dependency>
+        <groupId>com.foxinmy</groupId>
+        <artifactId>weixin4j-mp</artifactId>
+        <version>1.5.2</version>
+        </dependency>
+        <!--微信企业号API-->
+        <dependency>
+        <groupId>com.foxinmy</groupId>
+        <artifactId>weixin4j-qy</artifactId>
+        <version>1.5.2</version>
+        </dependency>
+
+
+        <!-- classifier这个需要加上 https://mvnrepository.com/artifact/net.sf.json-lib/json-lib -->
+        <dependency>
+            <groupId>net.sf.json-lib</groupId>
+            <artifactId>json-lib</artifactId>
+            <version>2.4</version>
+            <classifier>jdk15</classifier>
+        </dependency>
+
+
+
     </dependencies>
 
     <build>
-        <finalName>webchatStudy</finalName>
+        <!--这个是访问的根目录名字，可以覆盖项目的context属性-->
+        <finalName>wechatStudy</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

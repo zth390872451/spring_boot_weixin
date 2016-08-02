@@ -8,8 +8,6 @@ import org.aspectj.lang.annotation.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.annotation.Order;
-import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
@@ -27,9 +25,10 @@ import java.util.List;
  * after(连接点完成后通知，无论正常还是异常)。
  * 另外一种是around(环绕通知，在连接点执行前，执行完成后都通知)。
  */
-@Aspect // 定义切面类
-@Component
-@Order(-5) /*标识切面的优先级，值越高，优先级越高
+//@Aspect // 定义切面类
+//@Component
+//@Order(-5)
+/*标识切面的优先级，值越高，优先级越高
 （在切入点前的操作，按order的值由小到大执行;
 在切入点后的操作，按order的值由大到小执行）*/
 public class WebLogAspect {

@@ -1,7 +1,6 @@
 package main.util;
 
 import org.apache.velocity.app.VelocityEngine;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -19,9 +18,9 @@ import java.util.Map;
  */
 //@Service
 public class MailUtil {
-    @Autowired
+//    @Autowired
     private JavaMailSender mailSender;
-    @Autowired
+//    @Autowired
     private VelocityEngine velocityEngine;
 
     /**
@@ -101,7 +100,7 @@ public class MailUtil {
         Map<String, Object> model = new Hashtable<String, Object>();
         model.put("username", "didi");
         String text = VelocityEngineUtils.mergeTemplateIntoString(
-                velocityEngine, "template.vm", "UTF-8", model);
+                velocityEngine, "templates.vm", "UTF-8", model);
         helper.setText(text, true);
 
         mailSender.send(mimeMessage);

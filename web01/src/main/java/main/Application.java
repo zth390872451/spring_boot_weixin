@@ -1,3 +1,4 @@
+/*
 package main;
 
 import org.slf4j.Logger;
@@ -16,11 +17,13 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.Arrays;
 
+*/
 /**
  * Created by Administrator on 2016/7/23 0023.
  * SpringBootApplication equals( @Configuration ， @EnableAutoConfiguration 和 @ComponentScan )
  *
- */
+ *//*
+
 @SpringBootApplication
 public class Application extends SpringBootServletInitializer {
     private static final Logger log = LoggerFactory.getLogger(Application.class);
@@ -74,3 +77,4 @@ public class Application extends SpringBootServletInitializer {
         }
     }
 }
+*/

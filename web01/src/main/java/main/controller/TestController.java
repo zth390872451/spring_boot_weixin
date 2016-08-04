@@ -2,6 +2,7 @@ package main.controller;
 
 import main.domain.Admin;
 import main.service.AdminService;
+import main.util.MailUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,12 +15,20 @@ import java.util.concurrent.Callable;
  * Created by Administrator on 2016/7/29.
  */
 @RestController
-@RequestMapping("/asynTest")
+@RequestMapping("/test")
 public class TestController {
     @Autowired
     private AdminService adminService;
+    @Autowired
+    private MailUtil mailUtil;
 
     public Logger logger = LoggerFactory.getLogger(this.getClass());
+
+    @RequestMapping("sendMail")
+    public String mai() throws Exception {
+        mailUtil.sendMail(null,null,null,null);
+        return "success";
+    }
 
     //同步和异步处理与效率无直接关系
     //spring异步的出现目的：解决阻塞竞争问题。请求线程将处理过程放入队列中，然后重新回到请求线程池中

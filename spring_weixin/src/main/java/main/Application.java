@@ -43,10 +43,16 @@ public class Application extends SpringBootServletInitializer {
 
     public static void main(String[] args) throws UnknownHostException {
         SpringApplication app = new SpringApplication(Application.class);
+        /*ConfigurableApplicationContext applicationContext = SpringApplication.run(Application.class, args);
+        String[] beanDefinitionNames = applicationContext.getBeanDefinitionNames();
+        for (int i = 0; i <beanDefinitionNames.length; i++) {
+            System.out.println("beanDefinitionNames = " + beanDefinitionNames[i]);
+        }*/
         //application.setAdditionalProfiles("dev");
         //app.setShowBanner(false);
         SimpleCommandLinePropertySource source = new SimpleCommandLinePropertySource(args);
         addDefaultProfile(app, source);
+
 
         Environment env = app.run(args).getEnvironment();
         log.info("Access URLs:\n----------------------------------------------------------\n\t" +

@@ -1,4 +1,4 @@
-/*
+
 package main;
 
 import org.slf4j.Logger;
@@ -17,12 +17,12 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.Arrays;
 
-*/
+
 /**
  * Created by Administrator on 2016/7/23 0023.
  * SpringBootApplication equals( @Configuration ， @EnableAutoConfiguration 和 @ComponentScan )
  *
- *//*
+ */
 
 @SpringBootApplication
 public class Application extends SpringBootServletInitializer {
@@ -49,8 +49,8 @@ public class Application extends SpringBootServletInitializer {
         //application.setAdditionalProfiles("dev");
         //app.setShowBanner(false);
         SimpleCommandLinePropertySource source = new SimpleCommandLinePropertySource(args);
-        addDefaultProfile(app, source);
-
+//        addDefaultProfile(app, source);
+//
         Environment env = app.run(args).getEnvironment();
         log.info("Access URLs:\n----------------------------------------------------------\n\t" +
                         "Local: \t\thttp://127.0.0.1:{}\n\t" +
@@ -77,4 +77,4 @@ public class Application extends SpringBootServletInitializer {
         }
     }
 }
-*/
+

@@ -28,11 +28,13 @@ public class DynamicDataSourceAspect {
      */
     @Before("@annotation(targetDataSource)")
     public void changeDataSource(JoinPoint joinPoint, TargetDataSource targetDataSource){
-
         //获取当前的指定的数据源
         String dsId = targetDataSource.value();
         //如果不在我们注入的所有数据源范围之内，
         //那么输出警告信息，系统自动使用默认的数据源
+        joinPoint.getKind();
+        joinPoint.getThis();
+        joinPoint.toShortString();
         if (!DynamicDataSourceContextHolder.containsDataSource(dsId)){
             logger.warn("数据源 > {} 不存在，使用默认数据源 ，切入点的签名 = {}"+targetDataSource.value(),joinPoint.getSignature());
         }else {

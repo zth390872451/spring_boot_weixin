@@ -1,10 +1,12 @@
 package main.util;
 
 import org.apache.velocity.app.VelocityEngine;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.stereotype.Service;
 import org.springframework.ui.velocity.VelocityEngineUtils;
 
 import javax.mail.internet.MimeMessage;
@@ -16,12 +18,12 @@ import java.util.Map;
  * Created by Administrator on 2016/7/30 0030.
  * 邮件服务
  */
-//@Service
+@Service
 public class MailUtil {
-//    @Autowired
+    @Autowired
     private JavaMailSender mailSender;
 //    @Autowired
-    private VelocityEngine velocityEngine;
+    private VelocityEngine velocityEngine = new VelocityEngine();
 
     /**
      * 发送邮件
@@ -32,16 +34,18 @@ public class MailUtil {
      */
     public void sendMail(String from,String to,String subject,String textContent)throws Exception{
         SimpleMailMessage message = new SimpleMailMessage();
-       /* message.setFrom("zth390872451@gmail.com");
+       message.setFrom("zth390872451@gmail.com");
         message.setTo("390872451@qq.com");
         message.setSubject("测试邮件：主体");
-        message.setText("测试邮件：内容");*/
-        message.setFrom(from);
+        message.setText("测试邮件：内容");
+       /* message.setFrom(from);
         message.setTo(to);
         message.setSubject(subject);
-        message.setText(textContent);
+        message.setText(textContent);*/
         mailSender.send(message);
     }
+
+
 
     /**
      *发送附件

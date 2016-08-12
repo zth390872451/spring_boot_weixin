@@ -52,8 +52,10 @@ public class WeixinAccessController {
 
     @RequestMapping(method = { RequestMethod.POST }, produces = "application/xml;charset=UTF-8")
     public String post(HttpServletRequest request, HttpServletResponse response){
+        logger.info("接收微信消息!");
        String responseContent ;
         responseContent = coreService.processRequest(request);
+        logger.info("响应微信的消息responseContent={}!",responseContent);
         return responseContent;
     }
 

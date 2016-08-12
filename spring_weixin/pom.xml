@@ -190,7 +190,7 @@
 
     <build>
         <!--这个是访问的根目录名字，可以覆盖项目的context属性-->
-        <finalName>springboot_weixin</finalName>
+        <finalName>springToWeixin</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

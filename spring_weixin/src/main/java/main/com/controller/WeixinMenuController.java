@@ -4,9 +4,13 @@ import main.com.domain.Menu;
 import main.com.domain.factory.MenuManager;
 import main.com.util.HttpUtil;
 import net.sf.json.JSONObject;
+import org.springframework.mail.MailParseException;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by Administrator on 2016/8/2 0002.
@@ -62,7 +66,12 @@ public class WeixinMenuController {
     }
 
 
-
+    public static void main(String[] args) {
+        Map<String,Object>  mp = new HashMap<>();
+        mp.put("a","b");
+        String c = (String) mp.get("no");
+        System.out.println("c = " + c);
+    }
 
 
 

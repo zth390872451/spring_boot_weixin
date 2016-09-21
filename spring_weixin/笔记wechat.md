@@ -50,3 +50,26 @@ spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.MySQL5Dialect
 2，key后面的冒号，后面一定要跟一个空格
 
 3，把原有的application.properties删掉。然后一定要执行一下  maven -X clean install
+
+
+
+零散笔记：
+1、字节长度
+用ISO8859-1编码方式时，一个中/英文都只占一个字节；
+采用GB2312或GBK编码方式时，一个中文占两个字节；
+而采用UTF-8编码方式时，一个中文占三个字节。
+
+2、aop的作用
+配合注解实现权限控制
+比如添加一个自定义注解：
+@AdminPermission{
+value=(super|high|common)
+}
+管理员权限：定义为超级、高级、一般
+实现一个Aop切面，
+当发现在控制器或者方法上添加了该注解时，
+读取该注解中的值，配合Http参数等信息，
+进行相关业务判断，进行权限的控制。
+
+
+

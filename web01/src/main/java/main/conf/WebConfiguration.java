@@ -19,9 +19,9 @@ public class WebConfiguration extends WebMvcConfigurerAdapter {
     public TemplateResolver defaultTemplateResolver() {
         TemplateResolver resolver = new TemplateResolver();
         resolver.setResourceResolver(thymeleafResourceResolver());
-        resolver.setPrefix("/templates/");
+        resolver.setPrefix("classpath:/templates/");
         resolver.setSuffix(".html");
-        resolver.setCharacterEncoding("text/html;charset=UTF-8");
+        resolver.setCharacterEncoding("UTF-8");
 
         return resolver;
     }

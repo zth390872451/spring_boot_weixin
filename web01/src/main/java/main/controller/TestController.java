@@ -23,7 +23,7 @@ import java.util.concurrent.Callable;
 public class TestController {
     @Autowired
     private AdminService adminService;
-    @Autowired
+//    @Autowired
     private MailUtil mailUtil;
 
     public Logger logger = LoggerFactory.getLogger(this.getClass());

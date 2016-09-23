@@ -77,7 +77,7 @@ public class ShiroConfiguration {
 		filterChainDefinitionMap.put("/logout", "logout");
 		//<!-- 过滤链定义，从上向下顺序执行，一般将 /**放在最为下边 -->:这是一个坑呢，一不小心代码就不好使了;
 		//<!-- authc:所有url都必须认证通过才可以访问; anon:所有url都都可以匿名访问-->
-		filterChainDefinitionMap.put("/web/login", "anon");
+		filterChainDefinitionMap.put("/web/*", "anon");
 		filterChainDefinitionMap.put("/*", "authc");
 		//全部不进行认证
 //		filterChainDefinitionMap.put("/web/*", "anon");

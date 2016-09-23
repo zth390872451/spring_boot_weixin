@@ -11,7 +11,7 @@
 
     <modelVersion>4.0.0</modelVersion>
     <artifactId>web01</artifactId>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
 
 
     <properties>
@@ -52,22 +52,6 @@
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
 
-        <!--这个包 能解决外部tomcat容器启动时的数据源找不到的问题
-        {
-            如果你采用在yml文件中配置数据源且采用如下格式：dataSourceClassName出现红叉叉
-            spring:
-                datasource:
-                dataSourceClassName: com.mysql.jdbc.Driver
-        }我只想说：qnmlgm
-        参考链接：
-        http://stackoverflow.com/questions/24074749/spring-boot-cannot-determine-embedded-database-driver-class-for-database-type/25340415
-        -->
-        <!--<dependency>
-            <groupId>org.hsqldb</groupId>
-            <artifactId>hsqldb</artifactId>
-            <scope>runtime</scope>
-        </dependency>
--->
         <!--mysql-->
         <dependency>
             <groupId>mysql</groupId>
@@ -191,13 +175,26 @@
             <classifier>jdk15</classifier>
         </dependency>
 
+        <!-- Swagger -->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>2.2.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>2.2.2</version>
+        </dependency>
+
 
 
     </dependencies>
 
     <build>
         <!--这个是访问的根目录名字，可以覆盖项目的context属性-->
-        <finalName>wechatStudy</finalName>
+        <finalName>web</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

@@ -18,9 +18,9 @@ import java.util.Map;
  * Created by Administrator on 2016/7/30 0030.
  * 邮件服务
  */
-@Service
+//@Service
 public class MailUtil {
-    @Autowired
+//    @Autowired
     private JavaMailSender mailSender;
 //    @Autowired
     private VelocityEngine velocityEngine = new VelocityEngine();

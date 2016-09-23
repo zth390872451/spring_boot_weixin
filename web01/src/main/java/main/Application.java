@@ -52,11 +52,11 @@ public class Application extends SpringBootServletInitializer {
 //        addDefaultProfile(app, source);
 //
         Environment env = app.run(args).getEnvironment();
+        log.info("server.context-path:{}",env.getProperty("server.context-path"));
         log.info("Access URLs:\n----------------------------------------------------------\n\t" +
                         "Local: \t\thttp://127.0.0.1:{}\n\t" +
                         "External: \thttp://{}:{}\n----------------------------------------------------------",
                 env.getProperty("server.port"),
-
                 InetAddress.getLocalHost().getHostAddress(),
                 env.getProperty("server.port"),"spring.profiles.active========"+source.containsProperty("spring.profiles.active"));
     }

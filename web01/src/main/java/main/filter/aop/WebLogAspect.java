@@ -37,8 +37,8 @@ public class WebLogAspect {
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());
     ThreadLocal<Long> startTime = new ThreadLocal<Long>();
-    //定义切点：公开 任意返回值 main.controller 包下的所有类 的以aop开头的任意参数的方法
-//    @Pointcut("execution(public * main.controller.*.*aop(..) )")
+    //定义切点：公开 任意返回值 main.com.controller 包下的所有类 的以aop开头的任意参数的方法
+//    @Pointcut("execution(public * main.com.controller.*.*aop(..) )")
     @Pointcut("execution(public * main.controller..*.*(..))")
     public void webLog(){
 

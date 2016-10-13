@@ -15,6 +15,10 @@ AbstractRefreshableConfigApplicationContext extends AbstractRefreshableApplicati
 参考链接 完整介绍Spring 接口信息
 http://www.cnblogs.com/forerver-elf/p/4724199.html 
 
+http://www.cnblogs.com/forerver-elf/p/4724218.html
+
+http://blog.csdn.net/bubaxiu/article/details/41380683
+
 Spring定义一套资源加载的接口，并提供了实现类。ResourceLoader接口仅有一个getResource(String location)的方法，可以根据一个资源地址加载文件资源。
 不过这个文件资源仅支持带资源类型前缀的表达式，不支持Ant风格的资源路径表达式。ResourcePatternResolver扩展了ResourceLoader接口，定义了一个新的接口方法：getResources(String locationPattern)，该方法支持带资源类型前缀及Ant风格的资源路径的表达式。PathMatchingResourcePatternResolver是Spring提供了标准实现类。 
 

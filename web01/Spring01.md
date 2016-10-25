@@ -19,6 +19,17 @@ http://www.cnblogs.com/forerver-elf/p/4724218.html
 
 http://blog.csdn.net/bubaxiu/article/details/41380683
 
+ BeanFactoryPostProcessor和BeanPostProcessor的区别:BeanFactoryPostProcessor 可以对bean的定义（配置元数据）进行处理。
+ 也就是说， Spring IoC容器允许BeanFactoryPostProcessor在容器实际实例化任何其它的bean之前读取配置元数据，并有可能修改它。
+ 
+  1、BeanFactoryPostProcessor 的postProcessBeanFactory方法(获取 Bean的定义对象 BeanDefinition,  然后可以设置Bean属性的初始化值存入MutablePropertyValues中，
+    等待 步骤2 之后调用，具体等待探究)
+  2、然后调用Bean的构造器，属性最开始初始值为默认空值
+  3、最后调用 然后调用 BeanPostProcessor 的前置处理和后置处理,可以判断当前bean是否要处理的bean对象，如果是,可以根据需求进行强转，然后设置属性)。
+ 所以：Bean的属性值设置最后决定权在 BeanPostProcessor的后置处理方法手中。
+ 
+http://blog.csdn.net/mn11201117/article/details/24986325
+
 Spring定义一套资源加载的接口，并提供了实现类。ResourceLoader接口仅有一个getResource(String location)的方法，可以根据一个资源地址加载文件资源。
 不过这个文件资源仅支持带资源类型前缀的表达式，不支持Ant风格的资源路径表达式。ResourcePatternResolver扩展了ResourceLoader接口，定义了一个新的接口方法：getResources(String locationPattern)，该方法支持带资源类型前缀及Ant风格的资源路径的表达式。PathMatchingResourcePatternResolver是Spring提供了标准实现类。 
 

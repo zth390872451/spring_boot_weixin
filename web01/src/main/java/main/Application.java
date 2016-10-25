@@ -8,6 +8,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.context.web.SpringBootServletInitializer;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.core.env.Environment;
 import org.springframework.core.env.SimpleCommandLinePropertySource;
 
@@ -51,6 +52,8 @@ public class Application extends SpringBootServletInitializer {
         SimpleCommandLinePropertySource source = new SimpleCommandLinePropertySource(args);
 //        addDefaultProfile(app, source);
 //
+//        ClassPathXmlApplicationContext context=new
+//                        ClassPathXmlApplicationContext("/applicationContext.xml");
         Environment env = app.run(args).getEnvironment();
         log.info("server.context-path:{}",env.getProperty("server.context-path"));
         log.info("Access URLs:\n----------------------------------------------------------\n\t" +
